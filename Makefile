@@ -6,7 +6,7 @@
 #    By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 15:04:19 by kkaczoro          #+#    #+#              #
-#    Updated: 2022/04/12 17:18:25 by kkaczoro         ###   ########.fr        #
+#    Updated: 2022/04/12 17:26:11 by kkaczoro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS1	= $(addprefix libft/,${SRCSl})
 
 SRCS2	= test.c
 
-OBJS	= ${SRCS1:.c=.o} ${SRCS2:.c=.o}
+OBJS	= ${SRCS1:.c=.o} ${SRCS2:.c=.o}	
 
 NAME	= libftprintf.a
 
