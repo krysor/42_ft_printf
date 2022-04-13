@@ -6,7 +6,7 @@
 #    By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 15:04:19 by kkaczoro          #+#    #+#              #
-#    Updated: 2022/04/12 17:26:11 by kkaczoro         ###   ########.fr        #
+#    Updated: 2022/04/13 18:44:22 by kkaczoro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ RM		= rm -f
 CFLAGS	= -Wall -Wextra -Werror
 
 ${NAME}:	${OBJS}
-			ar r ${NAME} ${OBJS}			
+			ar r ${NAME} ${OBJS}	
 
 all:		${NAME}
 
