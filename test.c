@@ -1,4 +1,7 @@
+#include <stdio.h>
+
 int main()
 {
-    return 0;
+    printf("%.d", 1345345);
+	return 0;
 }
