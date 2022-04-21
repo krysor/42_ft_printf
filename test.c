@@ -1,30 +1,35 @@
 #include <stdio.h>
 
-static char	*ft_subst(char *str, char c1, char c2)
+static int	ft_nb_arg(char *s)
 {
+	int		nb;
+	char	*convs;
 	int		i;
-	int		p;
 
-	i = 0;
-	p = 0;
-	while (str[i])
+	convs = "cspdiuxX%%";
+	nb = 0;
+	while (*s)
 	{
-		if (str[i] == c1 && p == 0)
+		i = 0;
+		while (convs[i])
 		{
-			str[i] = c2;
-			p = 1;
+			if (*s == '%' && (*(s + 1) == convs[i]))
+			{
+				nb++;
+				s++;
+				break ;
+			}
+			i++;
 		}
-		else
-			p = 0;
-		i++;
+		s++;
 	}
-	return (str);
+	return (nb);
 }
 
-int	main()
+int	main(void)
 {
-	char str[] = "%dklasdnasjk%cvvdv%%dcjnscjds%i%%";
-	printf("%s", ft_subst(str, '%', 'O'));
+	char	str[] = "%%%dkl%asdnasjk%cvvdv%%dcjnscjds%i%%";
 
+	printf("%d", ft_nb_arg(str));
 	return (0);
 }

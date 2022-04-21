@@ -6,44 +6,46 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/20 19:08:11 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/21 21:10:40 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 
-static char	*ft_subst(char *str, char c1, char c2)
+static int	ft_nb_arg(char *s)
 {
+	int		nb;
+	char	*convs;
 	int		i;
-	int		p;
 
-	i = 0;
-	p = 0;
-	while (str[i])
+	convs = "cspdiuxX%%";
+	nb = 0;
+	while (*s)
 	{
-		if (str[i] == c1 && p == 0)
+		i = 0;
+		while (convs[i])
 		{
-			str[i] = c2;
-			p = 1;
+			if (*s == '%' && (*(s + 1) == convs[i]))
+			{
+				nb++;
+				s++;
+				break ;
+			}
+			i++;
 		}
-		else
-			p = 0;
-		i++;
+		s++;
 	}
-	return (str);
+	return (nb);
 }
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
-	char	*str;
-	char	**arr;
+	int		nb_arg;
 
-	str = ft_subst(ft_strdup(), '%', 127);
-	arr = split(str);
-	if (arr == 0)
-		return (1);
+	nb_arg = ft_nb_arg(s);
 	va_start(ap, 0);
+
 	va_end(ap);
 	return (0);
 }
@@ -73,5 +75,9 @@ practical:
 		1.3 use SMTH ELSE as split separator
 			1.3.1 CHECK IF THERES AN ANOTHER ASCII CHARACTER LIKE "%" THAT HAS NO EFFECT IN PRINTF
 	2. copy flags into temp char
-	3. create new 
+	3. create new
+
+TE DOEN
+	1. check if ft arg nb for sure works correctly
 */
+
