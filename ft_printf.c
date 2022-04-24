@@ -6,11 +6,12 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/21 21:10:40 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/22 17:25:47 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
+#include <unistd.h>
 
 static int	ft_nb_arg(char *s)
 {
@@ -18,8 +19,8 @@ static int	ft_nb_arg(char *s)
 	char	*convs;
 	int		i;
 
-	convs = "cspdiuxX%%";
 	nb = 0;
+	convs = "cspdiuxX%%";
 	while (*s)
 	{
 		i = 0;
@@ -41,15 +42,41 @@ static int	ft_nb_arg(char *s)
 int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
-	int		nb_arg;
+	char	*convc;
+	void	(*convf)(void *param);
+	int		i;
 
-	nb_arg = ft_nb_arg(s);
-	va_start(ap, 0);
-
+	convc = "cspdiuxX";
+	convf = {f1, f2, f3, f4, f5, f6, f7, f8};
+	va_start(ap, s);
+	while (*s)
+	{
+		if (*s == '%')
+		{
+			if (*(s + 1) == '%')
+			{
+				write (1, '%', 1);
+				s++;
+			}
+			i = 0;
+			while (convc[i])
+			{
+				if (*(s + 1) == convc[i])
+				{
+					convf[i](va_arg(ap, void));
+					s++;
+					break ;
+				}
+				i++;
+			}
+		}
+		else
+			write(1, *s, 1);
+		s++;
+	}
 	va_end(ap);
 	return (0);
 }
-
 /*
 BLUEPRINT printf
 1. parse the string
@@ -78,6 +105,10 @@ practical:
 	3. create new
 
 TE DOEN
-	1. check if ft arg nb for sure works correctly
+	1. make the libft comile with its own makefile or with the only makefile in the repo?
+	2. make printf correct syntax
+	3. test printf at the end
+	4. make all helper functions
+	5. find a way to process the flags
+	6. understand the flags
 */
-
