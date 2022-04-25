@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_flag.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/25 18:35:26 by kkaczoro         ###   ########.fr       */
+/*   Created: 2022/04/25 18:29:37 by kkaczoro          #+#    #+#             */
+/*   Updated: 2022/04/25 18:32:58 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdarg.h>
 
-int	ft_printf(const char *s, ...)
+int	ft_flag(const char *s, ...)
 {
-	va_list	ap;
-
-	if (*s == '\0')
-		return (0);
-	else if (*s == '%')
-		return (ft_flag(s + 1));
-	else
-	{
-		write (1, &(*s), 1);
-		return (1 + ft_printf(s + 1, ap));
-	}
-	va_end(ap);
+	(void)s;
+	write (1, 'Z', 1);
 }
