@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_flag.c                                          :+:      :+:    :+:   */
+/*   ft_conv.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/25 18:29:37 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/26 14:50:24 by kkaczoro         ###   ########.fr       */
+/*   Created: 2022/04/26 14:57:13 by kkaczoro          #+#    #+#             */
+/*   Updated: 2022/04/26 15:45:27 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int	ft_flag(const char *s, ...)
+char	*ft_conv(char c, ...)
 {
 	va_list	ap;
+	char	*str;
 
-	(void)s;
-	write (1, "Z", 1);
-	return (ft_printf(s, ap));
+	if (c == 'c')
+		return ((char *)({, '\0'}));//missing
+	if (c == 's')
+		return (va_arg(ap, char *));
+	if (c == 'p')
+		return ();//missing hexa?
+	if (c == 'd')
+		return ();//missing deci?
+	if (c == 'i')
+		return (ft_itoa(va_arg(ap, int)));
+	if (c == 'u')
+		return ();//missing deci?
+	if (c == 'x')
+		return ();//missing hexa?
+	if (c == 'X')
+		return ();//missing hexa?
+	return (ft_printf(, ap));
 }
