@@ -1,0 +1,18 @@
+questions:
+-extra makefile for libft OR 1 makefile in the root dir is enough?
+-bonus: apart or the same dir
+
+possible BLUEPRINT printf
+1. parse the string
+	1.1 c different than % -> write c
+	1.2 c == %
+		1.2.1 look at characterS after %
+			1.2.1.1 if the character one of the flagLIST
+				1.2.1.1.1 apply flag modifications
+					1.2.1.1.1.1 create array or str of flag modifications
+					1.2.1.1.1.2 create corresponding array or str of flag modifications FUNCTIONS
+			1.2.1.2 if the character one of the convesionLIST
+				1.2.1.2.1 apply conversion with proper function
+					1.2.1.2.1.1 create array or str of conversion modifications
+					1.2.1.2.1.2 create corresponding array or str of conversion FUNCTIONS
+			1.2.1.3 write the standard characters
