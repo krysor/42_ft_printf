@@ -16,3 +16,120 @@ possible BLUEPRINT printf
 					1.2.1.2.1.1 create array or str of conversion modifications
 					1.2.1.2.1.2 create corresponding array or str of conversion FUNCTIONS
 			1.2.1.3 write the standard characters
+
+TO DO:
+1. conversions by flags
+	c:
+		yes:
+			- padding right
+			MFW
+		no:
+			#
+			0 this actually works BUT original f gives an error
+			' '
+			+
+			.
+	s:
+		yes:
+			- padding right
+			MFW
+			. max number char to print
+		no:
+			#
+			0
+			' '
+			+
+	p:
+		yes:
+			- padding right
+			MFW
+		no:
+			#
+			0
+			' '
+			+
+			.
+	d+i:
+		yes:
+			- padding right
+			MFW
+			0
+			' '
+			+
+			. minimum number of digits to appear
+		no:
+			#
+	u:
+		yes:
+			- padding right
+			MFW
+			0
+			. minimum number of digits to appear
+		no:
+			#
+			' '
+			+
+	x+X:
+		yes:
+			- padding right
+			MFW
+			0
+			. minimum number of digits to appear
+			#
+		no:
+			' '
+			+
+	%:
+		no:
+			EVERYTHING
+
+2. flags by conversions:
+	'-'	:
+			*:
+				padding on the right
+			-OVERRIDES '0'
+	'0'	: 
+			d+i+u+x+X+(s+c+p*):
+				padding with 0's ON THE LEFT
+			-OVERRIDDEN BY '-'
+			-*p gets 0's between 0x (0X) and the number
+	'.'	:
+			s: 
+				MAXIMUM nb char to print
+			c:
+				no effect
+			d+i+u+x+X+(+p*):
+				MINIMUM number digits to appear
+	MFW	:
+			*:
+				minimum result string length
+	'#'	:
+			x+X:
+				0x or 0X in front of the string
+	' '	:
+			d+i:
+				blank before a positive number
+			-OVERRIDDEN BY '+'
+	'+'	:
+			d+i:
+				always a sign
+			-OVERRIDES ' '
+
+2.flags: conv aggreggation
+	MFW: all = OK
+	'-': all = OK
+	'0': d+i+u+x+X+(s+c+p*)
+			- s + c undefined but work well
+			- p has 0's inserted between the 0x (0X) and the number
+		IDEA: '#' modification should go AFTER '0'
+	'.': 3 different cases: 
+			- d+i+u+x+X+(p*)	:	MINIMUM
+			- s					:	MAXIMUM
+			- c					:	no effect
+	'+':	ONLY d+i
+	' ':	ONLY d+i
+	'#':	ONLY x+X
+
+	CAVE: '+'/'-' overrides ' '/'0'
+
+3.flags: order of application
