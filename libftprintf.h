@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:42:19 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/28 14:33:03 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/28 18:03:01 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@
 # include <unistd.h>
 
 int	ft_printf(const char *s, ...);
-int	ft_flag(const char *s, ...);
+int	ft_mod(const char *s, ...);
 
 #endif
