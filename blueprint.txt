@@ -130,6 +130,14 @@ TO DO:
 	' ':	ONLY d+i
 	'#':	ONLY x+X
 
-	CAVE: '+'/'-' overrides ' '/'0'
+	CAVE: '+' / '-' overrides ' ' / '0'
 
 3.flags: order of application
+- '.'
+- '+' / ' '
+	CAVE: +/- sign always AFTER '.'
+- '#'
+- MFW + '-' / '0'
+				-> '0' only if '.' NOT USED 
+
+	CAVE: '.' + '0' -> '0' no effect
