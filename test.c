@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:13:58 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/29 15:27:31 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:21:04 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,19 +17,20 @@
 
 int	ft_printf(const char *s, ...);
 
-/*
+
 int	main(void)
 {
 	//printf("%d", ft_printf("zxc\Uxc"));
 	//unsigned int	i = 123456789;
-	//int a = 456123;
+	unsigned int a = 3234456123;
 	//void	*b = &a;
-	char *str = "asdfzxc";
-	printf("\n%d", printf("abc%.20hhzq", str));
+	//char *str = ;
+	printf("\n%d", printf("%d", a/1000));
 	return (0);
 }
-*/
 
+
+/*
 int	ft_modif(const char *s, ...)
 {
 	va_list	ap;
@@ -81,3 +82,4 @@ int	main(void)
 	printf("\n%d\n", ft_printf("abc%hzqd", "abcdef%%%"));
 	return (0);
 }
+*/

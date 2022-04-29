@@ -6,13 +6,13 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:38:10 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/29 15:44:21 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/29 18:22:14 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_charnb(unsigned int n)
+static int	ft_charnb(int n)
 {
 	int	nb;
 	int	div;
