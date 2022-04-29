@@ -1,6 +1,6 @@
 questions:
 -extra makefile for libft OR 1 makefile in the root dir is enough?
--bonus: apart or the same dir
+-bonus: extra files (or alternative files like ft_modif in my case in the makefile bonus rule)
 
 possible BLUEPRINT printf
 1. parse the string
@@ -17,7 +17,7 @@ possible BLUEPRINT printf
 					1.2.1.2.1.2 create corresponding array or str of conversion FUNCTIONS
 			1.2.1.3 write the standard characters
 
-TO DO:
+FLAGS
 1. conversions by flags
 	c:
 		yes:
@@ -141,3 +141,6 @@ TO DO:
 				-> '0' only if '.' NOT USED 
 
 	CAVE: '.' + '0' -> '0' no effect
+
+4. TO DO
+- ft_modif modifications function
