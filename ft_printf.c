@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/29 14:20:37 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/30 20:44:50 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,12 @@
 int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
+	//va_list ap2;
 
+	//va_start(ap, s);
 	if (s == NULL || *s == '\0')
 		return (0);
+	//va_copy(ap, ap2);
 	if (*s == '%')
 	{
 		if (*(s + 1) == '%')
@@ -32,4 +35,5 @@ int	ft_printf(const char *s, ...)
 		write (1, &(*s), 1);
 		return (1 + ft_printf(s + 1, ap));
 	}
+	va_end(ap);
 }

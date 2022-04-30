@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:48:29 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/30 16:42:32 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/30 19:55:46 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ static int	ft_charnb(unsigned long long int n)
 	int						nb;
 	unsigned long long int	div;
 
-	nb = 12;
-	div = 17592186044416;
+	nb = 16;
+	div = 1152921504606846976;
 	while (n / div == 0)
 	{
 		nb--;
