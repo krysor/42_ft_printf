@@ -1,21 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoau.c                                         :+:      :+:    :+:   */
+/*   ft_uitoa.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:38:10 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/29 18:22:14 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/04/30 13:48:13 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "libftprintf.h"
+#include <stdio.h>
 
 static int	ft_charnb(int n)
 {
-	int	nb;
-	int	div;
+	int				nb;
+	unsigned int	div;
 
 	nb = 10;
 	div = 1000000000;
@@ -41,7 +42,7 @@ static void	ft_itoareal(unsigned int n, char *str, int len)
 	str[i] = n % 10 + '0';
 }
 
-char	*ft_itoau(unsigned int n)
+char	*ft_uitoa(unsigned int n)
 {
 	int		nbchr;
 	char	*str;
