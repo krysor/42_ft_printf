@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:57:13 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/30 20:30:52 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:50:01 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,11 @@ static char	*ft_ctostr(unsigned char c)
 	return (str);
 }
 
-char	*ft_conv(int chr, ...)
+char	*ft_conv(int chr, va_list ap)
 {
-	va_list			ap;
 	char			*res;
 	unsigned char	c;
 
-	va_start(ap, chr);
 	c = (unsigned char)chr;
 	if (c == 'c')
 		res = ft_ctostr((unsigned char)va_arg(ap, int));
@@ -50,6 +48,5 @@ char	*ft_conv(int chr, ...)
 		res = ft_itoax((unsigned long long int)va_arg(ap, unsigned long long int), c);
 	if (c == 'X')
 		res = ft_itoax((unsigned long long int)va_arg(ap, unsigned long long int), c);
-	va_end(ap);
 	return (res);
 }

@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:42:19 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/30 20:00:37 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:11:20 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <unistd.h>
 
 int		ft_printf(const char *s, ...);
-int		ft_modif(const char *s, ...);
-char	*ft_conv(int chr, ...);
+//ßint		ft_modif(const char *s, va_list ap);
+char	*ft_conv(int chr, va_list ap);
 char	*ft_uitoa(unsigned int n);
 char	*ft_itoax(unsigned long long int n, char c);
 void	ft_strtoupper(char *str);
