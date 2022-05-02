@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:13:58 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 14:48:58 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:55:50 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,6 @@ int	main(void)
 	//char a = 'z';
 	//char *b = &a;
 	//printf("%d\n", printf("%c\n", 'z'));
-	printf("%d\n", ft_printf("%x\nlala\n%s\n", 4564566446456, "boeboem"));
+	printf("%d\n", ft_printf("%x\nlala\n%z\n", 4564566446456, "boeboem"));
 	return (0);
 }
