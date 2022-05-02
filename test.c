@@ -6,12 +6,13 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:13:58 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 14:55:50 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:12:00 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 #include <stdio.h>
+#include <limits.h>
 //#include <stdarg.h>
 //#include <unistd.h>
 
@@ -33,6 +34,7 @@ int	main(void)
 	//char a = 'z';
 	//char *b = &a;
 	//printf("%d\n", printf("%c\n", 'z'));
-	printf("%d\n", ft_printf("%x\nlala\n%z\n", 4564566446456, "boeboem"));
+	printf("%d\n", printf("%c\n", 0));
+	printf("%d\n", ft_printf("%c\n", 0));
 	return (0);
 }

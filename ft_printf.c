@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 14:51:26 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:05:51 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ static int	ft_printf_real(const char *s, va_list ap)
 	}
 }
 
+#include <stdio.h>
 static int	ft_modif(const char *s, va_list ap)
 {
 	int		i;
@@ -71,7 +72,12 @@ static int	ft_modif(const char *s, va_list ap)
 	if (str == NULL)
 		return (0);
 	ft_putstr_fd(str, 1);
-	res = ft_strlen(str) + ft_printf_real(s + i + 1, ap); //fill with modficiation functions
+	res = 1;
+	if (c != 'c')
+		res = ft_strlen(str);
+	if (c == 'c' && ft_strlen(str) == 0)
+		ft_putchar_fd(0, 1);
+	res += ft_printf_real(s + i + 1, ap); //fill with modficiation functions
 	//possibly need to copy ap in the ft_conv call as not sure if the arg switch inside ft_conv remains in the call of ft_printf
 	free(str);
 	return (res);
