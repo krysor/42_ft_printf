@@ -6,13 +6,11 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:57:13 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 18:04:47 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:34:08 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-#include <stdio.h>
 
 static char	*ft_ctostr(unsigned char c)
 {
@@ -26,6 +24,16 @@ static char	*ft_ctostr(unsigned char c)
 	return (str);
 }
 
+static char	*ft_stostr(va_list ap)
+{
+	char	*str;
+
+	str = va_arg(ap, char *);
+	if (str == NULL)
+		str = "(null)";
+	return (ft_strdup(str));
+}
+
 char	*ft_conv(int chr, va_list ap)
 {
 	char			*res;
@@ -35,7 +43,7 @@ char	*ft_conv(int chr, va_list ap)
 	if (c == 'c')
 		res = ft_ctostr((unsigned char)va_arg(ap, int));
 	if (c == 's')
-		res = ft_strdup(va_arg(ap, char *));
+		res = ft_stostr(ap);
 	if (c == 'p')
 		res = ft_itoax((unsigned long long int)va_arg(ap, void *), 'x');
 	if (c == 'd')

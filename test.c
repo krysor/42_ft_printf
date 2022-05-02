@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:13:58 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 18:12:00 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/02 18:35:16 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <limits.h>
 //#include <stdarg.h>
-//#include <unistd.h>
+#include <unistd.h>
 
 /*
 int	main(void)
@@ -34,7 +34,10 @@ int	main(void)
 	//char a = 'z';
 	//char *b = &a;
 	//printf("%d\n", printf("%c\n", 'z'));
-	printf("%d\n", printf("%c\n", 0));
-	printf("%d\n", ft_printf("%c\n", 0));
+	//write(1, NULL, 1);
+	//printf("%d\n", printf("%s\n", NULL));
+	//printf("%d\n", ft_printf("%s\n", NULL));
+	char *str = ft_strdup(NULL);
+	(void)str;
 	return (0);
 }
