@@ -6,12 +6,30 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 15:38:10 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/30 13:48:13 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/04 19:44:22 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-#include <stdio.h>
+
+static int	ft_charnb(int n);
+static void	ft_uitoareal(unsigned int n, char *str, int len);
+
+char	*ft_uitoa(unsigned int n)
+{
+	int		nbchr;
+	char	*str;
+
+	if (n == 0)
+		return (ft_strdup("0"));
+	nbchr = ft_charnb(n);
+	str = (char *)malloc(sizeof(char) * (nbchr + 1));
+	if (str == NULL)
+		return (NULL);
+	str[nbchr] = '\0';
+	ft_uitoareal(n, str, nbchr);
+	return (str);
+}
 
 static int	ft_charnb(int n)
 {
@@ -28,7 +46,7 @@ static int	ft_charnb(int n)
 	return (nb);
 }
 
-static void	ft_itoareal(unsigned int n, char *str, int len)
+static void	ft_uitoareal(unsigned int n, char *str, int len)
 {
 	int	i;
 
@@ -40,20 +58,4 @@ static void	ft_itoareal(unsigned int n, char *str, int len)
 		n /= 10;
 	}
 	str[i] = n % 10 + '0';
-}
-
-char	*ft_uitoa(unsigned int n)
-{
-	int		nbchr;
-	char	*str;
-
-	if (n == 0)
-		return (ft_strdup("0"));
-	nbchr = ft_charnb(n);
-	str = (char *)malloc(sizeof(char) * (nbchr + 1));
-	if (str == NULL)
-		return (NULL);
-	str[nbchr] = '\0';
-	ft_itoareal(n, str, nbchr);
-	return (str);
 }

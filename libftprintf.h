@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:42:19 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/04 15:46:25 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:13:44 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int		ft_printf(const char *s, ...);
 char	*ft_conv(int chr, va_list ap);
 char	*ft_uitoa(unsigned int n);
 char	*ft_itoax(unsigned long long int n, char c);
-void	ft_strtoupper(char *str);
 char	*ft_hash(const char *s, char *str, char conv);
 
 #endif

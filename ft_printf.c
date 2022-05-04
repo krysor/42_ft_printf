@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/04 15:44:24 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/04 17:11:29 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ static int	ft_printf_real(const char *s, va_list ap)
 	}
 }
 
-#include <stdio.h>
 static int	ft_modif(const char *s, va_list ap)
 {
 	int		i;
@@ -71,7 +70,6 @@ static int	ft_modif(const char *s, va_list ap)
 	str = ft_hash(s, ft_conv(c, ap), c);
 	if (str == NULL)
 		return (0);
-	//printf("\nstrlen: %zu\n", ft_strlen(str));
 	ft_putstr_fd(str, 1);
 	res = 1;
 	if (c != 'c')

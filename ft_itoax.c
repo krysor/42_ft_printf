@@ -6,11 +6,33 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/29 17:48:29 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/04/30 19:55:46 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/04 20:09:11 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+static int	ft_charnb(unsigned long long int n);
+static void	ft_itoareal(unsigned long long int n, char *str, int len);
+static void	ft_strtoupper(char *str);
+
+char	*ft_itoax(unsigned long long int n, char c)
+{
+	int		nbchr;
+	char	*str;
+
+	if (n == 0 || (c != 'x' && c != 'X'))
+		return (ft_strdup("0"));
+	nbchr = ft_charnb(n);
+	str = (char *)malloc(sizeof(char) * (nbchr + 1));
+	if (str == NULL)
+		return (NULL);
+	str[nbchr] = '\0';
+	ft_itoareal(n, str, nbchr);
+	if (c == 'X')
+		ft_strtoupper(str);
+	return (str);
+}
 
 static int	ft_charnb(unsigned long long int n)
 {
@@ -43,20 +65,11 @@ static void	ft_itoareal(unsigned long long int n, char *str, int len)
 	str[i] = str_hex[n % 16];
 }
 
-char	*ft_itoax(unsigned long long int n, char c)
+static void	ft_strtoupper(char *str)
 {
-	int		nbchr;
-	char	*str;
-
-	if (n == 0 || (c != 'x' && c != 'X'))
-		return (ft_strdup("0"));
-	nbchr = ft_charnb(n);
-	str = (char *)malloc(sizeof(char) * (nbchr + 1));
-	if (str == NULL)
-		return (NULL);
-	str[nbchr] = '\0';
-	ft_itoareal(n, str, nbchr);
-	if (c == 'X')
-		ft_strtoupper(str);
-	return (str);
+	while (*str)
+	{
+		*str = ft_toupper(*str);
+		str++;
+	}
 }
