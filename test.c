@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:13:58 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 18:35:16 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:03:13 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ int	main(void)
 	//char *b = &a;
 	//printf("%d\n", printf("%c\n", 'z'));
 	//write(1, NULL, 1);
-	//printf("%d\n", printf("%s\n", NULL));
-	//printf("%d\n", ft_printf("%s\n", NULL));
-	char *str = ft_strdup(NULL);
-	(void)str;
+	printf("%d\n", printf("%lx\n", LONG_MAX));
+	printf("%d\n", ft_printf("%x\n", LONG_MAX));
+	//char *str = ft_strdup(NULL);
+	//(void)str;
 	return (0);
 }

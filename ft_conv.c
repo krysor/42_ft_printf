@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:57:13 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/02 18:34:08 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:21:18 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,8 +53,10 @@ char	*ft_conv(int chr, va_list ap)
 	if (c == 'u')
 		res = ft_uitoa(va_arg(ap, unsigned int));
 	if (c == 'x')
-		res = ft_itoax((unsigned long long int)va_arg(ap, unsigned long long int), c);
+		res = ft_itoax((unsigned long long int)va_arg(ap,
+					unsigned long long int), c);
 	if (c == 'X')
-		res = ft_itoax((unsigned long long int)va_arg(ap, unsigned long long int), c);
+		res = ft_itoax((unsigned long long int)va_arg(ap,
+					unsigned long long int), c);
 	return (res);
 }
