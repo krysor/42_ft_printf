@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 14:57:13 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/05 15:47:48 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/05 18:12:36 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,16 @@ char	*ft_conv(int chr, va_list ap)
 	if (c == 's')
 		res = ft_stostr(ap);
 	if (c == 'p')
-		res = ft_itoax((unsigned long long int)va_arg(ap, void *), 'x');
+		res = ft_ptoa((unsigned long long int)va_arg(ap, void *));
 	if (c == 'd')
 		res = ft_itoa(va_arg(ap, int));
 	if (c == 'i')
 		res = ft_itoa(va_arg(ap, int));
 	if (c == 'u')
-		res = ft_uitoa(va_arg(ap, unsigned int));
+		res = ft_uitoa(va_arg(ap, unsigned int), c);
 	if (c == 'x')
-		res = ft_itoaa((unsigned int)va_arg(ap,
-					unsigned int), c);
+		res = ft_uitoa(va_arg(ap, unsigned int), c);
 	if (c == 'X')
-		res = ft_itoaa((unsigned int)va_arg(ap,
-					unsigned int), c);
+		res = ft_uitoa(va_arg(ap, unsigned int), c);
 	return (res);
 }

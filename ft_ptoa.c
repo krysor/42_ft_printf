@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoaa.c                                         :+:      :+:    :+:   */
+/*   ft_ptoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/04 20:19:39 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/05 15:50:37 by kkaczoro         ###   ########.fr       */
+/*   Created: 2022/04/29 17:48:29 by kkaczoro          #+#    #+#             */
+/*   Updated: 2022/05/05 17:48:08 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_charnb(unsigned int n);
-static void	ft_itoareal(unsigned int n, char *str, int len);
-static void	ft_strtoupper(char *str);
+static int	ft_charnb(unsigned long long int n);
+static void	ft_itoareal(unsigned long long int n, char *str, int len);
 
-char	*ft_itoaa(unsigned int n, char c)
+char	*ft_ptoa(unsigned long long int n)
 {
 	int		nbchr;
 	char	*str;
 
-	if (n == 0 || (c != 'x' && c != 'X'))
+	if (n == 0)
 		return (ft_strdup("0"));
 	nbchr = ft_charnb(n);
 	str = (char *)malloc(sizeof(char) * (nbchr + 1));
@@ -29,18 +28,16 @@ char	*ft_itoaa(unsigned int n, char c)
 		return (NULL);
 	str[nbchr] = '\0';
 	ft_itoareal(n, str, nbchr);
-	if (c == 'X')
-		ft_strtoupper(str);
 	return (str);
 }
 
-static int	ft_charnb(unsigned int n)
+static int	ft_charnb(unsigned long long int n)
 {
 	int						nb;
-	unsigned int			div;
+	unsigned long long int	div;
 
-	nb = 8;
-	div = 268435456;
+	nb = 16;
+	div = 1152921504606846976;
 	while (n / div == 0)
 	{
 		nb--;
@@ -49,7 +46,7 @@ static int	ft_charnb(unsigned int n)
 	return (nb);
 }
 
-static void	ft_itoareal(unsigned int n, char *str, int len)
+static void	ft_itoareal(unsigned long long int n, char *str, int len)
 {
 	int		i;
 	char	*str_hex;
@@ -63,13 +60,4 @@ static void	ft_itoareal(unsigned int n, char *str, int len)
 		n /= 16;
 	}
 	str[i] = str_hex[n % 16];
-}
-
-static void	ft_strtoupper(char *str)
-{
-	while (*str)
-	{
-		*str = ft_toupper(*str);
-		str++;
-	}
 }
