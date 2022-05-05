@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/04 17:11:29 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/05 17:06:59 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 static int	ft_printf_real(const char *s, va_list ap);
 static int	ft_modif(const char *s, va_list ap);
-static int	ft_isconv(const char c);
+static int	ft_findconv(const char *s);
 
 int	ft_printf(const char *s, ...)
 {
 	va_list	ap;
-	int		res;
+	int		result;
 
 	va_start(ap, s);
-	res = ft_printf_real(s, ap);
+	result = ft_printf_real(s, ap);
 	va_end(ap);
-	return (res);
+	return (result);
 }
 
 static int	ft_printf_real(const char *s, va_list ap)
@@ -49,53 +49,40 @@ static int	ft_printf_real(const char *s, va_list ap)
 
 static int	ft_modif(const char *s, va_list ap)
 {
-	int		i;
-	char	c;
-	int		res;
+	int		result;
+	int		i_conv;
 	char	*str;
 
-	i = 0;
-	c = 0;
-	while (s[i])
-	{
-		if (ft_isconv(s[i]))
-		{
-			c = s[i];
-			break ;
-		}
-		i++;
-	}
-	if (c == 0)
+	i_conv = ft_findconv(s);
+	if (i_conv == -1)
 		return (0);
-	str = ft_hash(s, ft_conv(c, ap), c);
+	str = ft_hash(s, ft_conv(s[i_conv], ap), s[i_conv]);//optimize ft_hash and ft_conv :
 	if (str == NULL)
 		return (0);
 	ft_putstr_fd(str, 1);
-	res = 1;
-	if (c != 'c')
-		res = ft_strlen(str);
-	if (c == 'c' && ft_strlen(str) == 0)
+	result = 1;
+	if (s[i_conv] != 'c')
+		result = ft_strlen(str);
+	if (s[i_conv] == 'c' && ft_strlen(str) == 0)
 		ft_putchar_fd(0, 1);
-	res += ft_printf_real(s + i + 1, ap); //fill with modficiation functions
+	result += ft_printf_real(s + i_conv + 1, ap); //fill with modficiation functions
 	//possibly need to copy ap in the ft_conv call as not sure if the arg switch inside ft_conv remains in the call of ft_printf
 	free(str);
-	return (res);
+	return (result);
 }
 
-static int	ft_isconv(const char c)
+static int	ft_findconv(const char *s)
 {
-	if (c == 'c' || c == 's' || c == 'p' || c == 'd' || c == 'i' || c == 'u'
-		|| c == 'x' || c == 'X')
-		return (1);
-	return (0);
-}
+	int	i;
 
-/*
-//static of niet
-int ft_isflag(const char c)
-{
-	if (c == '-' || c == '0' || c == '#' || c == ' ' || c == '+')
-		return (1);
-	return (0);
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] == 'c' || s[i] == 's' || s[i] == 'p'
+			|| s[i] == 'd' || s[i] == 'i' || s[i] == 'u'
+			|| s[i] == 'x' || s[i] == 'X')
+			return (i);
+		i++;
+	}
+	return (-1);
 }
-*/
