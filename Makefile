@@ -6,7 +6,7 @@
 #    By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 15:04:19 by kkaczoro          #+#    #+#              #
-#    Updated: 2022/05/05 18:11:29 by kkaczoro         ###   ########.fr        #
+#    Updated: 2022/05/06 14:49:10 by kkaczoro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,11 @@ SRCS1	= $(addprefix libft/,${SRCSl})
 
 SRCS2	= ft_conv.c ft_ptoa.c ft_printf.c ft_uitoa.c ft_flags.c
 
-OBJS	= ${SRCS1:.c=.o} ${SRCS2:.c=.o}	
+BONS	= ${SRCS1} ft_conv.c ft_ptoa.c ft_printfb.c ft_uitoa.c ft_flags.c
+
+OBJS	= ${SRCS1:.c=.o} ${SRCS2:.c=.o}
+
+BOBJS	= ${BONS:.c=.o}
 
 NAME	= libftprintf.a
 
@@ -35,6 +39,10 @@ ${NAME}:	${OBJS}
 			ar r ${NAME} ${OBJS}	
 
 all:		${NAME}
+
+bonus:		${BOBJS}
+			@ar r ${NAME} ${BOBJS}
+			@echo "relinking bonus finished"
 
 clean:
 			${RM} ${OBJS}
