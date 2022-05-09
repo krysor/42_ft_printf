@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/06 17:07:50 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/09 12:21:38 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_modif(const char *s, va_list ap)
 	i_conv = ft_findconv(s);
 	if (i_conv == -1)
 		return (0);
-	str = ft_hash(s, ft_dot(s, ft_conv(s[i_conv], ap), i_conv), s[i_conv]);
+	str = ft_flag(s, ft_conv(s[i_conv], ap), i_conv);
 	if (str == NULL)
 		return (0);
 	ft_putstr_fd(str, 1);
@@ -65,7 +65,7 @@ static int	ft_modif(const char *s, va_list ap)
 		result = ft_strlen(str);
 	if (s[i_conv] == 'c' && ft_strlen(str) == 0)
 		ft_putchar_fd(0, 1);
-	result += ft_printf_real(s + i_conv + 1, ap); //fill with modficiation functions
+	result += ft_printf_real(s + i_conv + 1, ap);
 	free(str);
 	return (result);
 }
