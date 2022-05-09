@@ -6,11 +6,13 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:19:09 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/09 16:12:49 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/09 17:53:05 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+#include <stdio.h>
 
 static int	ft_dotornot(const char *s, char *old_str, int ind_conv, int *prec);
 static void	ft_negative(char *new_str);
@@ -46,22 +48,18 @@ char	*ft_dot(const char *s, char *old_str, int ind_conv)
 static int	ft_dotornot(const char *s, char *old_str, int ind_conv, int *prec)
 {
 	char	conv;
+	int		len_str;
 
 	conv = s[ind_conv];
+	len_str = (int)ft_strlen(old_str);
+	if ((conv == 'd' || conv == 'i') && old_str[0] == '-')
+		(*prec)++;
 	if ((!ft_isflag(s, '.', conv) || conv == 'c' || *prec < 0
 			|| ((conv == 'd' || conv == 'i' || conv == 'o' || conv == 'u'
 					|| conv == 'x' || conv == 'X')
-				&& *prec <= (int)ft_strlen(old_str))
-			|| (conv == 's' && *prec >= (int)ft_strlen(old_str))))
-	{
-		if ((conv == 'd' || conv == 'i') && old_str[0] == '-'
-			&& *prec + 1 > (int)ft_strlen(old_str))
-		{	
-			(*prec)++;
-			return (0);
-		}
+				&& *prec <= len_str)
+			|| (conv == 's' && *prec >= len_str)))
 		return (1);
-	}
 	return (0);
 }
 
