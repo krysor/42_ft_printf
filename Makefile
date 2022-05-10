@@ -6,7 +6,7 @@
 #    By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 15:04:19 by kkaczoro          #+#    #+#              #
-#    Updated: 2022/05/09 12:24:12 by kkaczoro         ###   ########.fr        #
+#    Updated: 2022/05/10 16:33:02 by kkaczoro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRCS1	= $(addprefix libft/,${SRCSl})
 
 SRCS2	= ft_conv.c ft_ptoa.c ft_printf.c ft_uitoa.c ft_flags.c
 
-BONS	= ${SRCS1} ft_conv.c ft_ptoa.c ft_printfb.c ft_uitoa.c ft_flags.c ft_dot.c ft_hash.c
+BONS	= ${SRCS1} ft_conv.c ft_ptoa.c ft_printfb.c ft_uitoa.c ft_flags.c ft_dot.c ft_hash.c ft_field.c
 
 OBJS	= ${SRCS1:.c=.o} ${SRCS2:.c=.o}
 
