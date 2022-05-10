@@ -142,5 +142,12 @@ FLAGS
 
 	CAVE: '.' + '0' -> '0' no effect
 
+3 cases:
+MFW + 0 and no . : MFW + 0
+MFW + 0 and .	 : MFW
+MFW				 : MFW
+MFW + -			 : MFW + -
+MFW + - and 0    : MFW + -
+
 4. TO DO
 - ft_modif modifications function
