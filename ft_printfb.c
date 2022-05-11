@@ -6,11 +6,13 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/09 12:21:38 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/11 13:42:49 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+#include <stdio.h>
 
 static int	ft_printf_real(const char *s, va_list ap);
 static int	ft_modif(const char *s, va_list ap);
@@ -60,11 +62,16 @@ static int	ft_modif(const char *s, va_list ap)
 	if (str == NULL)
 		return (0);
 	ft_putstr_fd(str, 1);
-	result = 1;
-	if (s[i_conv] != 'c')
-		result = ft_strlen(str);
-	if (s[i_conv] == 'c' && ft_strlen(str) == 0)
+	//ft_putchar_fd('Z', 1);//moet weg
+	result = ft_strlen(str);
+	//printf("result: %d\n", result);
+	/*
+	if (s[i_conv] == 'c' && result == 0)
+	{
+		result++;
 		ft_putchar_fd(0, 1);
+	}
+	*/
 	result += ft_printf_real(s + i_conv + 1, ap);
 	free(str);
 	return (result);
