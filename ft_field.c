@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:30:43 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/11 13:43:14 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/11 14:36:30 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,9 +82,12 @@ static char	*ft_field_real(char *old_str, int field, int minus)
 		spaces = field - len_old_str;
 		(void)ft_memset((void *)new_str, ' ', spaces);
 	}
+	(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
+	/*
 	(void)ft_memset((void *)(new_str + spaces), '\0', 1);//is da nodig
 	if (old_str[0] != 0)//is da nodig
 		(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
+	*/
 	if (minus)
 	{	
 		spaces = field - len_old_str;
@@ -94,3 +97,32 @@ static char	*ft_field_real(char *old_str, int field, int minus)
 	free(old_str);
 	return (new_str);
 }
+
+/*
+static char	*ft_field_real(char *old_str, int field, int minus)
+{
+	char	*new_str;
+	int		len_old_str;
+	int		spaces;
+
+	new_str = (char *)malloc(sizeof(char) * field + 1);
+	if (new_str == NULL)
+		return (NULL);
+	len_old_str = ft_strlen(old_str);
+	spaces = 0;
+	if (!minus)
+	{
+		spaces = field - len_old_str;
+		(void)ft_memset((void *)new_str, ' ', spaces);
+	}
+	(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
+	if (minus)
+	{	
+		spaces = field - len_old_str;
+		(void)ft_memset((void *)(new_str + len_old_str), ' ', spaces);
+		(void)ft_memset((void *)(new_str + len_old_str + spaces), '\0', 1);
+	}
+	free(old_str);
+	return (new_str);
+}
+*/

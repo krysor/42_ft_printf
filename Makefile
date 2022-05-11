@@ -6,7 +6,7 @@
 #    By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/10 15:04:19 by kkaczoro          #+#    #+#              #
-#    Updated: 2022/05/10 16:33:02 by kkaczoro         ###   ########.fr        #
+#    Updated: 2022/05/11 15:09:55 by kkaczoro         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,9 +20,11 @@ SRCSl	= ft_isalpha.c ft_isdigit.c ft_isalnum.c ft_isascii.c ft_isprint.c \
 
 SRCS1	= $(addprefix libft/,${SRCSl})
 
-SRCS2	= ft_conv.c ft_ptoa.c ft_printf.c ft_uitoa.c ft_flags.c
+SRCSa	= ft_hash.c ft_conv.c ft_ptoa.c ft_uitoa.c ft_flags.c ft_dot.c ft_hash.c ft_field.c
 
-BONS	= ${SRCS1} ft_conv.c ft_ptoa.c ft_printfb.c ft_uitoa.c ft_flags.c ft_dot.c ft_hash.c ft_field.c
+SRCS2	= ${SRCSa} ft_printf.c 
+
+BONS	= ${SRCS1} ${SRCSa} ft_printfb.c
 
 OBJS	= ${SRCS1:.c=.o} ${SRCS2:.c=.o}
 

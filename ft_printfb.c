@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/11 13:42:49 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/11 15:11:33 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,16 +62,12 @@ static int	ft_modif(const char *s, va_list ap)
 	if (str == NULL)
 		return (0);
 	ft_putstr_fd(str, 1);
-	//ft_putchar_fd('Z', 1);//moet weg
 	result = ft_strlen(str);
-	//printf("result: %d\n", result);
-	/*
 	if (s[i_conv] == 'c' && result == 0)
 	{
 		result++;
 		ft_putchar_fd(0, 1);
 	}
-	*/
 	result += ft_printf_real(s + i_conv + 1, ap);
 	free(str);
 	return (result);
