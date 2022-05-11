@@ -1,6 +1,7 @@
 questions:
 -extra makefile for libft OR 1 makefile in the root dir is enough?
 -bonus: extra files (or alternative files like ft_modif in my case in the makefile bonus rule)
+-make sure everything gets freeed if something fails
 
 possible BLUEPRINT printf
 1. parse the string
