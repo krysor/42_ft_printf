@@ -6,13 +6,11 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:19:09 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/10 16:26:07 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/11 12:11:21 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-#include <stdio.h>
 
 static int	ft_dotornot(const char *s, char *old_str, int ind_conv, int *prec);
 static void	ft_negative(char *new_str);
