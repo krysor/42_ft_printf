@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:30:43 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/11 14:36:30 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/11 16:31:17 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 #include <stdio.h>
 
 static char	*ft_zero(const char *s, char *old_str, int i_conv, int field);
-static char	*ft_field_real(char *old_str, int field, int minus);
+static char	*ft_field_real(char *old_str, int field, int minus, char conv);
 
-char	*ft_field(const char *s, char *old_str, int i_conv)
+char	*ft_field(const char *s, char *old_str, int i_conv)//IDEA: if its C and len_str == 0: still make the right string, to get its length do either ((len str) + 1) or (len (str + 1)), for writing use an alternative ft putchar that will use the lentgh
 {
 	int		field;
 	int		len_old;
@@ -35,7 +35,7 @@ char	*ft_field(const char *s, char *old_str, int i_conv)
 		new_str = ft_zero(new_str, old_str, i_conv, field);//OTHER CASES MUST FREE old_str INSIDE RESPECTIVE FUNCTIONS or INSIDE respective scope
 	else
 		new_str = ft_field_real(old_str, field,
-				ft_isflag(new_str, '-', new_str[i_conv]));
+				ft_isflag(new_str, '-', new_str[i_conv]), new_str[i_conv]);
 	return (new_str);
 }
 
@@ -66,7 +66,7 @@ static char	*ft_zero(const char *s, char *old_str, int i_conv, int field)
 	return (new_str);
 }
 
-static char	*ft_field_real(char *old_str, int field, int minus)
+static char	*ft_field_real(char *old_str, int field, int minus, char conv)
 {
 	char	*new_str;
 	int		len_old_str;
@@ -76,18 +76,17 @@ static char	*ft_field_real(char *old_str, int field, int minus)
 	if (new_str == NULL)
 		return (NULL);
 	len_old_str = ft_strlen(old_str);
+	if (conv == 'c' && len_old_str == 0)
+		len_old_str = 1;
 	spaces = 0;
 	if (!minus)
 	{
 		spaces = field - len_old_str;
 		(void)ft_memset((void *)new_str, ' ', spaces);
 	}
-	(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
-	/*
-	(void)ft_memset((void *)(new_str + spaces), '\0', 1);//is da nodig
-	if (old_str[0] != 0)//is da nodig
+	(void)ft_memset((void *)(new_str + spaces), '\0', 2);//TO DO BEFORE TESTING WITH TESTS: return corrected length and write the WHOLE string (without stopping when 0)
+	if (old_str[0] != 0)
 		(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
-	*/
 	if (minus)
 	{	
 		spaces = field - len_old_str;
