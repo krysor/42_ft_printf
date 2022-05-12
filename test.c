@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/26 13:13:58 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/11 16:28:04 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:43:16 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,13 @@ int	main(void)
 	//const char *str = "%.10s";
 	//printf("%s", ft_memchr(str, '.', (size_t)4));
 
-	printf("%d\n", printf(" %-1c %-2c %-3c \n", '0', 0, '1'));
-	printf("%d\n", ft_printf(" %-1c %-2c %-3c \n", '0', 0, '1'));
+	/*
+	printf("%d", printf("%10c\n", 'b'));
+	printf("\n");
+	printf("%d", ft_printf("%10c\n", 'b'));
+	*/
+
+	if (ft_memchr("-0# +", '+', 4))
+		printf("coucou");
 	return (0);
 }

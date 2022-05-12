@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:23:02 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/12 14:58:59 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 15:45:41 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,20 @@ int	ft_isflag(const char *s, char flag, int i_conv)
 	int	i;
 
 	i = 0;
-	while (s[i] != s[i_conv])
+	while (s[i] != s[i_conv] && ft_memchr("-0# +", s[i], 5))
 	{
 		if (s[i] == flag)
 			return (1);
 		i++;
+	}
+	if (flag == '.')
+	{
+		while (s[i] != s[i_conv])
+		{
+			if (s[i] == flag)
+				return (1);
+			i++;
+		}
 	}
 	return (0);
 }
@@ -70,3 +79,19 @@ char	*ft_sign(const char *s, char *old_str, int i_conv)
 	free(old_str);
 	return (new_str);
 }
+
+/*
+int	ft_isflag(const char *s, char flag, int i_conv)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != s[i_conv])
+	{
+		if (s[i] == flag)
+			return (1);
+		i++;
+	}
+	return (0);
+}
+*/
