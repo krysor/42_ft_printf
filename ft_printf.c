@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/06 14:49:45 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:30:00 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static int	ft_modif(const char *s, va_list ap)
 	i_conv = ft_findconv(s);
 	if (i_conv == -1)
 		return (0);
-	str = ft_hash(s, ft_conv(s[i_conv], ap), s[i_conv]);
+	str = ft_hash(s, ft_conv(s[i_conv], ap), i_conv);
 	if (str == NULL)
 		return (0);
 	ft_putstr_fd(str, 1);

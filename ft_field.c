@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:30:43 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/11 16:31:17 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:59:21 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 static char	*ft_zero(const char *s, char *old_str, int i_conv, int field);
 static char	*ft_field_real(char *old_str, int field, int minus, char conv);
 
-char	*ft_field(const char *s, char *old_str, int i_conv)//IDEA: if its C and len_str == 0: still make the right string, to get its length do either ((len str) + 1) or (len (str + 1)), for writing use an alternative ft putchar that will use the lentgh
+char	*ft_field(const char *s, char *old_str, int i_conv)
 {
 	int		field;
 	int		len_old;
@@ -30,12 +30,12 @@ char	*ft_field(const char *s, char *old_str, int i_conv)//IDEA: if its C and len
 	len_old = (int)ft_strlen(old_str);
 	if (!field || field <= len_old)
 		return (old_str);
-	if (ft_isflag(new_str, '0', new_str[i_conv])
-		&& !ft_isflag(new_str, '-', new_str[i_conv]))
-		new_str = ft_zero(new_str, old_str, i_conv, field);//OTHER CASES MUST FREE old_str INSIDE RESPECTIVE FUNCTIONS or INSIDE respective scope
+	if (ft_isflag(new_str, '0', i_conv)
+		&& !ft_isflag(new_str, '-', i_conv))
+		new_str = ft_zero(new_str, old_str, i_conv, field);
 	else
 		new_str = ft_field_real(old_str, field,
-				ft_isflag(new_str, '-', new_str[i_conv]), new_str[i_conv]);
+				ft_isflag(new_str, '-', i_conv), new_str[i_conv]);
 	return (new_str);
 }
 

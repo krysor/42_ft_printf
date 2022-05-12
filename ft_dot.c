@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:19:09 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/12 14:15:26 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:23:27 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ static int	ft_dotornot(const char *s, char *old_str, int i_conv, int *prec)
 	len_str = (int)ft_strlen(old_str);
 	if ((conv == 'd' || conv == 'i') && old_str[0] == '-')
 		(*prec)++;
-	if ((!ft_isflag(s, '.', conv) || conv == 'c' || *prec < 0
+	if ((!ft_isflag(s, '.', i_conv) || conv == 'c' || *prec < 0
 			|| ((conv == 'd' || conv == 'i' || conv == 'u' || conv == 'x'
 					|| conv == 'X') && *prec <= len_str)
 			|| (conv == 's' && *prec >= len_str)))

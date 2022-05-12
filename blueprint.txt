@@ -4,6 +4,8 @@ questions:
 -make sure everything gets freeed if something fails
 -problem that my bonus must recompile, otherwise doesnt work?
 -before submission check if bonus part passes std tests as well
+-try to move functions between files to have less total c files
+-more than 1 non static function in 1 c file?
 
 possible BLUEPRINT printf
 1. parse the string

@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:23:02 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/12 14:11:04 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:58:59 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,16 @@ char	*ft_flag(const char *s, char *old_str, int i_conv)
 	return (old_str);
 }
 
-int	ft_isflag(const char *s, char flag, char conv)
+int	ft_isflag(const char *s, char flag, int i_conv)
 {
-	while (*s != conv)
+	int	i;
+
+	i = 0;
+	while (s[i] != s[i_conv])
 	{
-		if (*s == flag)
+		if (s[i] == flag)
 			return (1);
-		s++;
+		i++;
 	}
 	return (0);
 }
@@ -51,8 +54,8 @@ char	*ft_sign(const char *s, char *old_str, int i_conv)
 	int		len_old;
 	char	*new_str;
 
-	space = ft_isflag(s, ' ', s[i_conv]);
-	plus = ft_isflag(s, '+', s[i_conv]);
+	space = ft_isflag(s, ' ', i_conv);
+	plus = ft_isflag(s, '+', i_conv);
 	len_old = ft_strlen(old_str);
 	if ((s[i_conv] != 'i' && s[i_conv] != 'd') || old_str[0] == '-'
 		|| (!space && !plus))
