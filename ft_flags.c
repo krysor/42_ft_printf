@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:23:02 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/10 18:30:51 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/12 14:11:04 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,12 @@ char	*ft_sign(const char *s, char *old_str, int i_conv);
 
 char	*ft_flag(const char *s, char *old_str, int i_conv)
 {
+	if (old_str == NULL)
+		return (NULL);
 	old_str = ft_dot(s, old_str, i_conv);
 	if (old_str == NULL)//old_str wont get free if failure
 		return (NULL);
-	old_str = ft_hash(s, old_str, s[i_conv]);
+	old_str = ft_hash(s, old_str, i_conv);
 	if (old_str == NULL)
 		return (NULL);
 	old_str = ft_sign(s, old_str, i_conv);//control sign AFTER making MFV work
