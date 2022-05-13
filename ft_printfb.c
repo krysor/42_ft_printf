@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/13 17:23:01 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/13 18:10:16 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	ft_printf(const char *s, ...)
 	va_list	ap;
 	int		result;
 
+	if (s == NULL || *s == '\0')
+		return (0);
 	va_start(ap, s);
 	result = ft_printf_real(s, ap);
 	va_end(ap);
