@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:42:19 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/13 13:05:22 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:23:21 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@
 # include "libft/libft.h" 
 # include <stdarg.h>
 # include <unistd.h>
-
-#include <stdio.h>//delete before submission
 
 int		ft_printf(const char *s, ...);
 char	*ft_conv(int chr, va_list ap);

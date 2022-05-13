@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/12 17:28:46 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/13 17:23:01 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,6 @@ static int	ft_modif(const char *s, va_list ap)
 	zero_c = 0;
 	if (s[i_conv] == 'c' && (int)ft_strlen(str) == 0)
 		zero_c = 1;
-	//if ((s[i_conv] == 'd' || s[i_conv] == 'i' || s[i_conv] == 'u' || s[i_conv] == 'x' || s[i_conv] == 'X') && str[0] == '0')
-	//	str[0] = '\0';
 	str = ft_flag(s, str, i_conv);
 	if (str == NULL)
 		return (0);

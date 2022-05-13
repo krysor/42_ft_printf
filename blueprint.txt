@@ -153,6 +153,3 @@ MFW + 0 and .	 : MFW
 MFW				 : MFW
 MFW + -			 : MFW + -
 MFW + - and 0    : MFW + -
-
-4. TO CORRECT:
-- "." or ".0" with 0 as input and "diuxX" as conv -> no '0' should get printed
