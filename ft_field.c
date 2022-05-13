@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:30:43 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/13 12:53:31 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/13 13:08:02 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,30 +96,6 @@ static char	*ft_field_real(char *old_str, int field, int minus, char conv)
 	free(old_str);
 	return (new_str);
 }
-
-/*
-char	*ft_field(const char *s, char *old_str, int i_conv)
-{
-	int		field;
-	int		len_old;
-	char	*new_str;
-
-	new_str = (char *)s;
-	while (*s == '-' || *s == '0' || *s == '#' || *s == ' ' || *s == '+')
-		s++;
-	field = ft_atoi(s);
-	len_old = (int)ft_strlen(old_str);
-	if (!field || field <= len_old)
-		return (old_str);
-	if (ft_isflag(new_str, '0', i_conv)
-		&& !ft_isflag(new_str, '-', i_conv))
-		new_str = ft_zero(new_str, old_str, i_conv, field);
-	else
-		new_str = ft_field_real(old_str, field,
-				ft_isflag(new_str, '-', i_conv), new_str[i_conv]);
-	return (new_str);
-}
-*/
 
 /*
 static char	*ft_field_real(char *old_str, int field, int minus)
