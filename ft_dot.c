@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:19:09 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/13 17:22:53 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:31:22 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ char	*ft_dot(const char *s, char *old_str, int i_conv)
 		return (old_str);
 	new_str = (char *)malloc(sizeof(char) * precision + 1);
 	if (new_str == NULL)
+	{
+		free(old_str);
 		return (NULL);
+	}
 	if (s[i_conv] != 's')
 	{
 		(void)ft_memset((void *)new_str, '0', precision - ft_strlen(old_str));

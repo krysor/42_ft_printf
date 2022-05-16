@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 20:19:39 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/05 18:12:00 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/16 15:18:54 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 static int	ft_charnb(unsigned int n, char c);
 static void	ft_itoareal(unsigned int n, char *str, int len, char c);
-static void	ft_strtoupper(char *str);
 
 char	*ft_uitoa(unsigned int n, char c)
 {
@@ -30,7 +29,14 @@ char	*ft_uitoa(unsigned int n, char c)
 	str[nbchr] = '\0';
 	ft_itoareal(n, str, nbchr, c);
 	if (c == 'X')
-		ft_strtoupper(str);
+	{
+		nbchr = 0;
+		while (str[nbchr])
+		{
+			str[nbchr] = ft_toupper(str[nbchr]);
+			nbchr++;
+		}
+	}
 	return (str);
 }
 
@@ -75,13 +81,4 @@ static void	ft_itoareal(unsigned int n, char *str, int len, char c)
 		n /= base;
 	}
 	str[i] = chars[n % base];
-}
-
-static void	ft_strtoupper(char *str)
-{
-	while (*str)
-	{
-		*str = ft_toupper(*str);
-		str++;
-	}
 }

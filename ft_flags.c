@@ -6,30 +6,28 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/04 14:23:02 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/12 16:06:01 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:36:25 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-char	*ft_sign(const char *s, char *old_str, int i_conv);
+static char	*ft_sign(const char *s, char *old_str, int i_conv);
 
 char	*ft_flag(const char *s, char *old_str, int i_conv)
 {
 	if (old_str == NULL)
 		return (NULL);
 	old_str = ft_dot(s, old_str, i_conv);
-	if (old_str == NULL)//old_str wont get free if failure
+	if (old_str == NULL)
 		return (NULL);
 	old_str = ft_hash(s, old_str, i_conv);
 	if (old_str == NULL)
 		return (NULL);
-	old_str = ft_sign(s, old_str, i_conv);//control sign AFTER making MFV work
+	old_str = ft_sign(s, old_str, i_conv);
 	if (old_str == NULL)
 		return (NULL);
 	old_str = ft_field(s, old_str, i_conv);
-	if (old_str == NULL)
-		return (NULL);
 	return (old_str);
 }
 
@@ -56,7 +54,7 @@ int	ft_isflag(const char *s, char flag, int i_conv)
 	return (0);
 }
 
-char	*ft_sign(const char *s, char *old_str, int i_conv)
+static char	*ft_sign(const char *s, char *old_str, int i_conv)
 {
 	int		plus;
 	int		space;
@@ -71,7 +69,10 @@ char	*ft_sign(const char *s, char *old_str, int i_conv)
 		return (old_str);
 	new_str = (char *)malloc(sizeof(char) * len_old + 2);
 	if (new_str == NULL)
+	{
+		free (old_str);
 		return (NULL);
+	}
 	new_str[0] = ' ';
 	if (plus)
 		new_str[0] = '+';
@@ -80,18 +81,30 @@ char	*ft_sign(const char *s, char *old_str, int i_conv)
 	return (new_str);
 }
 
-/*
-int	ft_isflag(const char *s, char flag, int i_conv)
+char	*ft_hash(const char *s, char *old_str, int i_conv)
 {
-	int	i;
+	char	*new_str;
+	size_t	str_old;
 
-	i = 0;
-	while (s[i] != s[i_conv])
+	if (old_str == NULL)
+		return (NULL);
+	if ((s[i_conv] != 'p' && ((s[i_conv] != 'x' && s[i_conv] != 'X')
+				|| !ft_isflag(s, '#', i_conv)))
+		|| (s[i_conv] != 'p' && ft_strlen(old_str) == 1 && old_str[0] == '0'))
+		return (old_str);
+	str_old = ft_strlen(old_str);
+	new_str = (char *)malloc(sizeof(char) * str_old + 3);
+	if (new_str == NULL)
 	{
-		if (s[i] == flag)
-			return (1);
-		i++;
+		free(old_str);
+		return (NULL);
 	}
-	return (0);
+	new_str[0] = '0';
+	if (s[i_conv] == 'X')
+		new_str[1] = s[i_conv];
+	else
+		new_str[1] = 'x';
+	(void)ft_strlcpy(new_str + 2, old_str, str_old + 1);
+	free(old_str);
+	return (new_str);
 }
-*/
