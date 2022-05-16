@@ -4,6 +4,9 @@ questions:
 -problem that my bonus must recompile, otherwise doesnt work?
 -before submission check if bonus part passes std tests as well
 
+-should not relink
+-make the printf Makefile use the libft Makefile
+
 possible BLUEPRINT printf
 1. parse the string
 	1.1 c different than % -> write c
@@ -144,6 +147,7 @@ FLAGS
 
 	CAVE: '.' + '0' -> '0' no effect
 
+4.possible field combinations
 3 cases:
 MFW + 0 and no . : MFW + 0
 MFW + 0 and .	 : MFW
