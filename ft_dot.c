@@ -6,7 +6,7 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/09 12:19:09 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/16 16:31:22 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:42:27 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ char	*ft_dot(const char *s, char *old_str, int i_conv)
 
 	new_str = (char *)ft_memchr((void *)s, '.', (size_t)i_conv);
 	precision = -2;
-	if (new_str != 0)//start with negative or so precision: add if no '.' flag, dont precision. Adjust the dotornot condition
+	if (new_str != 0)
 		precision = ft_atoi(new_str + 1);
 	if ((s[i_conv] == 'd' || s[i_conv] == 'i' || s[i_conv] == 'u' || s[i_conv] == 'x' || s[i_conv] == 'X') && old_str[0] == '0' && precision == 0)
 		old_str[0] = '\0';
-	if (ft_dotornot(s, old_str, i_conv, &precision))//check the conditions here
+	if (ft_dotornot(s, old_str, i_conv, &precision))
 		return (old_str);
 	new_str = (char *)malloc(sizeof(char) * precision + 1);
 	if (new_str == NULL)

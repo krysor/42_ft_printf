@@ -6,13 +6,11 @@
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/10 16:30:43 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/16 16:35:59 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/16 16:43:00 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
-
-#include <stdio.h>
 
 static char	*ft_zero(const char *s, char *old_str, int i_conv, int field);
 static char	*ft_field_real(char *old_str, int field, int minus, char conv);
@@ -91,7 +89,7 @@ static char	*ft_field_real(char *old_str, int field, int minus, char conv)
 		spaces = field - len_old_str;
 		(void)ft_memset((void *)new_str, ' ', spaces);
 	}
-	(void)ft_memset((void *)(new_str + spaces), '\0', 2);//TO DO BEFORE TESTING WITH TESTS: return corrected length and write the WHOLE string (without stopping when 0)
+	(void)ft_memset((void *)(new_str + spaces), '\0', 2);
 	if (old_str[0] != 0)
 		(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
 	if (minus)
@@ -103,32 +101,3 @@ static char	*ft_field_real(char *old_str, int field, int minus, char conv)
 	free(old_str);
 	return (new_str);
 }
-
-/*
-static char	*ft_field_real(char *old_str, int field, int minus)
-{
-	char	*new_str;
-	int		len_old_str;
-	int		spaces;
-
-	new_str = (char *)malloc(sizeof(char) * field + 1);
-	if (new_str == NULL)
-		return (NULL);
-	len_old_str = ft_strlen(old_str);
-	spaces = 0;
-	if (!minus)
-	{
-		spaces = field - len_old_str;
-		(void)ft_memset((void *)new_str, ' ', spaces);
-	}
-	(void)ft_strlcpy(new_str + spaces, old_str, len_old_str + 1);
-	if (minus)
-	{	
-		spaces = field - len_old_str;
-		(void)ft_memset((void *)(new_str + len_old_str), ' ', spaces);
-		(void)ft_memset((void *)(new_str + len_old_str + spaces), '\0', 1);
-	}
-	free(old_str);
-	return (new_str);
-}
-*/
