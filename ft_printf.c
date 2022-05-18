@@ -1,20 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_printfb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kkaczoro <kkaczoro@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 18:49:48 by kkaczoro          #+#    #+#             */
-/*   Updated: 2022/05/16 14:38:45 by kkaczoro         ###   ########.fr       */
+/*   Updated: 2022/05/16 17:06:40 by kkaczoro         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-static int	ft_printf_real(const char *s, va_list ap);
-static int	ft_modif(const char *s, va_list ap);
-static int	ft_findconv(const char *s);
+static int		ft_printf_real(const char *s, va_list ap);
+static int		ft_modif(const char *s, va_list ap);
+static int		ft_findconv(const char *s);
+static size_t	ft_strlen_zero(const char *s);
 
 int	ft_printf(const char *s, ...)
 {
@@ -54,19 +55,25 @@ static int	ft_modif(const char *s, va_list ap)
 	int		result;
 	int		i_conv;
 	char	*str;
+	int		zero_c;
 
 	i_conv = ft_findconv(s);
 	if (i_conv == -1)
 		return (0);
-	str = ft_hash(s, ft_conv(s[i_conv], ap), i_conv);
+	str = ft_conv(s[i_conv], ap);
+	zero_c = 0;
+	if (str != NULL && s[i_conv] == 'c' && (int)ft_strlen(str) == 0)
+		zero_c = 1;
+	str = ft_flag(s, str, i_conv);
 	if (str == NULL)
 		return (0);
-	ft_putstr_fd(str, 1);
-	result = 1;
-	if (s[i_conv] != 'c')
-		result = ft_strlen(str);
-	if (s[i_conv] == 'c' && ft_strlen(str) == 0)
-		ft_putchar_fd(0, 1);
+	result = ft_strlen(str);
+	if (zero_c)
+		result = ft_strlen_zero(str);
+	if (zero_c)
+		write(1, str, result);
+	else
+		ft_putstr_fd(str, 1);
 	result += ft_printf_real(s + i_conv + 1, ap);
 	free(str);
 	return (result);
@@ -86,4 +93,17 @@ static int	ft_findconv(const char *s)
 		i++;
 	}
 	return (-1);
+}
+
+static size_t	ft_strlen_zero(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	i++;
+	while (s[i])
+		i++;
+	return (i);
 }
