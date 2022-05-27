@@ -1,0 +1,9 @@
+This ft_printf project was done completely by me but the code used is inefficient.
+
+On one hand there is some overlap in static functions used in functions converting integers, unsigned integers and unsigned long long integers to strings.
+Futhermore each flag function reads the piece of a string between the "%" character and conversion specifing character "c/s/i/u/p/x/X" again.
+Each flag function frees the received pointer and allocates the output all over again.
+
+A more ellegant and easier comprehandable approach would be using a struct which stores all the flag information one by one during a single read of the input string and at the end applies of the flag modifications in the right order, possibly beginning with the one requiring allocating the most amount of memory (and thus a single heap allocation) followed by modifications to that piece without additional reallocations.
+
+This project has taught me the importance of a rough blueprint of the project, allowing finding the simpliest way of solving a problem and avoiding excessive and overcomplicated code.
